@@ -2,6 +2,7 @@ var User = require('../models/user');
 var router = require('express').Router();
 var passport = require('passport');
 var nodemailer = require('nodemailer');
+var secret = require('../config/secret');
 
 router.post('/api/user/login', function(req, res, next){
     passport.authenticate('local-login', function(err, user, info){
@@ -36,8 +37,8 @@ router.post('/api/user/signup', function(req, res, next){
             let transporter = nodemailer.createTransport({
                 service:'gmail',
                 auth:{
-                    user:'thapelo.dev@gmail.com',
-                    pass:'0114141440'
+                    user:secret.account.email,
+                    pass:secret.account.password
                 }
             });
  
