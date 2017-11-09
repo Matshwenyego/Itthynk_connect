@@ -34,7 +34,7 @@ app.use(session({
 	secret: secret.cookieSecret,
 	store: new MongoStore({url: secret.database, autoReconnect: true})
 }));
-app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(function(req, res, next){
@@ -44,7 +44,7 @@ app.use(function(req, res, next){
 
 
 var apiRoutes = require('./api/user');
-app.use(userRoutes);
+app.use(apiRoutes);
 
 
 app.listen(secret.port, function(req, res){
